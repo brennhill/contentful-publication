@@ -18,7 +18,7 @@
   "bin": "./bin/fullSync.js",
   "dependencies": {
     "bluebird": "~0.11.6-0",
-    "contentful-management": "^0.1.1",
+    "contentful-management": "^0.2.0",
     "lodash": "2.4.1",
     "minimist": "0.0.8",
     "nano": "5.7.1",
@@ -40,4 +40,3 @@
     "test": "./node_modules/mocha/bin/mocha test"
   }
 }
-
