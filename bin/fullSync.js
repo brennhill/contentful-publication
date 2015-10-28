@@ -4,6 +4,7 @@
 
 var ContentSync = require('../lib/ContentSync'),
     ContentClean = require('../lib/ContentClean'),
+    ContentClone = require('../lib/ContentClone'),
     ContentPurge = require('../lib/ContentPurge'),
     Migrate = require('../lib/Migrate'),
   ModelSync = require('../lib/ModelSync'),
@@ -75,6 +76,14 @@ switch (type) {
     })
     .catch(function (error) {
       logger.error('Content purge error ', error);
+    });
+    break;
+  case 'clone':
+    var contentClone = new ContentClone.fromConfig(config);
+    modelSync.run().then(function(){
+      contentClone.run().then(function(){
+        console.log("Clone complete");
+      })
     });
     break;
   case 'forceCopy':
