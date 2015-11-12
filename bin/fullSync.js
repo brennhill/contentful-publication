@@ -7,6 +7,7 @@ var ContentSync = require('../lib/ContentSync'),
     ContentClone = require('../lib/ContentClone'),
     ContentPurge = require('../lib/ContentPurge'),
     Migrate = require('../lib/Migrate'),
+    Audit = require('../lib/Audit'),
   ModelSync = require('../lib/ModelSync'),
   argv = require('minimist')(process.argv.slice(2)),
   logger = require('../lib/logger'),
@@ -35,6 +36,7 @@ var config = JSON.parse(fs.readFileSync(argv.c)),
 
 var type = argv.t ? argv.t : '';
 var contentType = argv.i ? argv.i : '';
+var modifyFunc = argv.f ? argv.f : null;
 
 switch (type) {
   case 'model':
@@ -66,9 +68,43 @@ switch (type) {
         });
     break;
   case 'migrate':
-      migrate.run(contentType).then(function(){
+    var modifier = function (entry) {
+      return entry;
+    }
+    try{
+      modifier = require('../'+modifyFunc);
+      console.log("Modifier used.")
+    } catch(e) {
+      console.log("No modify function");
+    }
+    migrate.run(contentType, modifier).then(function(){
         console.log("ran migrate");
-      })
+    });
+    break;
+  case 'migrateEntry':
+    var modifier = function (input) {
+      console.log(modifying);
+      return input;
+    }
+    try{
+      if(modifyFunc) {
+        modifier = require('../'+modifyFunc);
+        console.log("Modifier used.")
+      }
+
+    } catch(e) {
+      console.log(e);
+      console.log("No modify function");
+    }
+      var MigrateEntry = require('../lib/MigrateEntry');
+      var mEntry = MigrateEntry.fromConfig(config);
+    mEntry.run(contentType, modifier).then(function(){
+      console.log("ran migrate");
+    })
+    break;
+  case 'cloudinaryMigrate':
+    var cloudinaryM = require("../lib/CloudinaryMigrate");
+      cloudinaryM.run()
     break;
   case 'purge':
     contentPurge.run().then(function () {
@@ -80,11 +116,9 @@ switch (type) {
     break;
   case 'clone':
     var contentClone = new ContentClone.fromConfig(config);
-    modelSync.run().then(function(){
       contentClone.run().then(function(){
         console.log("Clone complete");
-      })
-    });
+      });
     break;
   case 'forceCopy':
       contentClean.run().then(function() {
@@ -97,6 +131,14 @@ switch (type) {
       }).catch(function(error) {
         logger.error('Content clean error ', error);
       })
+    break;
+  case 'audit':
+      var audit = new Audit.fromConfig(config);
+      return audit.run().then(function(){
+        logger.info("Audit Complete");
+      }).catch(function(error){
+        logger.error(error);
+      });
     break;
   default:
     modelSync.run()
