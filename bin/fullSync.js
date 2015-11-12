@@ -70,6 +70,13 @@ switch (type) {
         console.log("ran migrate");
       })
     break;
+  case 'migrateEntry':
+      var MigrateEntry = require('../lib/MigrateEntry');
+      var mEntry = MigrateEntry.fromConfig(config);
+    mEntry.run(contentType).then(function(){
+      console.log("ran migrate");
+    })
+    break;
   case 'purge':
     contentPurge.run().then(function () {
       logger.info('Purge is complete');

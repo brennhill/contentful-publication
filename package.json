@@ -18,6 +18,7 @@
   "bin": "./bin/fullSync.js",
   "dependencies": {
     "bluebird": "~0.11.6-0",
+    "contentful": "^1.2.0",
     "contentful-management": "^0.2.0",
     "lodash": "2.4.1",
     "minimist": "0.0.8",
