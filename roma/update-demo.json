@@ -1,0 +1,15 @@
+{
+  "tokenFilename": "from-QA-to-Demo.token.json",
+  "contentful": {
+    "defaultLocale": "en-US",
+    "sourceSpace": "r8cskg2nrnas",
+    "sourceContentDeliveryToken": "f4459c43624800a7b251e433c70b56444ef865aa113f041a5c859ef94c8f63cd",
+    "sourceContentManagementToken": "5b3463aa2ecb675b37cc29adcc1b789649172ff63e17616967bb75edd38737e7",
+    "destinationSpace": "64ijkhc5byxh",
+    "destinationSpaceManagementToken": "5b3463aa2ecb675b37cc29adcc1b789649172ff63e17616967bb75edd38737e7",
+    "contentManagementAccessToken": "5b3463aa2ecb675b37cc29adcc1b789649172ff63e17616967bb75edd38737e7",
+    "publishRetryDelay": 30000
+  },
+  "priorityTypes":["1qLQvgJObW6eqm2sAicSCU","7iCykTzXhY6SS8uIykSYsO","4M9sWYTbZSCSmsIG8gcyqq","3UqsAzuMDCMeAqkeGC0SuE","3mJXENV4HCim2e6qAeEMeq","4M62AsNBHyQg8GUOUWai2I","5TOzvgifLywa4mE0QecmeA"],
+  "finalTypes":["1aGy2iZGL04kAS6aG6oyQW","6mu69eiIMw2IcqkQiYS6u6"]
+}
