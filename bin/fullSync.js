@@ -7,6 +7,7 @@ var ContentSync = require('../lib/ContentSync'),
     ContentClone = require('../lib/ContentClone'),
     ContentPurge = require('../lib/ContentPurge'),
     Migrate = require('../lib/Migrate'),
+    Audit = require('../lib/Audit'),
   ModelSync = require('../lib/ModelSync'),
   argv = require('minimist')(process.argv.slice(2)),
   logger = require('../lib/logger'),
@@ -115,11 +116,9 @@ switch (type) {
     break;
   case 'clone':
     var contentClone = new ContentClone.fromConfig(config);
-
       contentClone.run().then(function(){
         console.log("Clone complete");
-      })
-
+      });
     break;
   case 'forceCopy':
       contentClean.run().then(function() {
@@ -132,6 +131,14 @@ switch (type) {
       }).catch(function(error) {
         logger.error('Content clean error ', error);
       })
+    break;
+  case 'audit':
+      var audit = new Audit.fromConfig(config);
+      return audit.run().then(function(){
+        logger.info("Audit Complete");
+      }).catch(function(error){
+        logger.error(error);
+      });
     break;
   default:
     modelSync.run()

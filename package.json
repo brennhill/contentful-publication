@@ -18,8 +18,11 @@
   "bin": "./bin/fullSync.js",
   "dependencies": {
     "bluebird": "~0.11.6-0",
-    "contentful": "^1.2.0",
+    "cloudinary": "^1.2.5",
+    "contentful": "^1.2.1",
     "contentful-management": "^0.2.0",
+    "deep-diff": "^0.3.3",
+    "deep-equal": "^1.0.1",
     "lodash": "2.4.1",
     "minimist": "0.0.8",
     "nano": "5.7.1",
