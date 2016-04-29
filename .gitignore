@@ -1,0 +1,9 @@
+roma/
+velon/
+demo/
+lastSyncToken.json
+lastSyncTokenTest.json
+contentful-publication.log
+config/
+.idea
+node_modules

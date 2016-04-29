@@ -1,0 +1,46 @@
+{
+  "name": "contentful-publication",
+  "version": "0.9.0",
+  "description": "Allow to synchronize space content with another space",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jsebfranck/contentful-publication.git"
+  },
+  "contributors": [
+    {
+      "name": "Jean-Sébastien FRANCK"
+    },
+    {
+      "name": "Jérémy VINAI"
+    }
+  ],
+  "bin": "./bin/fullSync.js",
+  "dependencies": {
+    "bluebird": "~0.11.6-0",
+    "cloudinary": "^1.2.5",
+    "contentful": "^1.2.1",
+    "contentful-management": "^0.2.0",
+    "deep-diff": "^0.3.3",
+    "deep-equal": "^1.0.1",
+    "lodash": "2.4.1",
+    "minimist": "0.0.8",
+    "nano": "5.7.1",
+    "q": "^1.1.2",
+    "questor": "^1.0.0",
+    "winston": "^0.8.3"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.2",
+    "gulp": "^3.8.10",
+    "gulp-jshint": "^1.9.0",
+    "gulp-mocha": "^2.0.0",
+    "jscoverage": "^0.5.9",
+    "mocha": "^2.1.0",
+    "mocha-lcov-reporter": "0.0.1",
+    "nock": "^0.51.0"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test"
+  }
+}
